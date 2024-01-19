@@ -58,9 +58,12 @@ class VetController {
 		List<Vet> listVets = paginated.getContent();
 		listVets = listVets.stream()
 			.map(vet -> {
-			vet.setFirstName("Krissy");
-			return vet;
-		}).collect(Collectors.toList());
+				if (vet.getFirstName().equals("Rafael")) {
+					vet.setFirstName("Krissy");
+				}
+				return vet;
+			})
+			.collect(Collectors.toList());
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", paginated.getTotalPages());
 		model.addAttribute("totalItems", paginated.getTotalElements());
