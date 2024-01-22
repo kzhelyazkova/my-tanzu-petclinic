@@ -56,14 +56,6 @@ class VetController {
 
 	private String addPaginationModel(int page, Page<Vet> paginated, Model model) {
 		List<Vet> listVets = paginated.getContent();
-		listVets = listVets.stream()
-			.map(vet -> {
-				if (vet.getFirstName().equals("Rafael")) {
-					vet.setFirstName("Krissy");
-				}
-				return vet;
-			})
-			.collect(Collectors.toList());
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", paginated.getTotalPages());
 		model.addAttribute("totalItems", paginated.getTotalElements());
